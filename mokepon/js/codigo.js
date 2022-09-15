@@ -3,7 +3,15 @@ let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
+
 function iniciarJuego() {
+
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar_ataque')
+    sectionSeleccionarAtaque.style.display= 'none'
+
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'none'
+
     let botonMascotaJugador = document.getElementById("boton_mascota")
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador)
 
@@ -20,6 +28,11 @@ function iniciarJuego() {
 }
 
 function seleccionarMascotaJugador() {
+    let sectionSeleccionarMascota = document.getElementById('seleccionar_mascota')
+    sectionSeleccionarMascota.style.display = 'none'
+
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar_ataque')
+    sectionSeleccionarAtaque.style.display= 'block'
 
     let inputHipodoge = document.getElementById('hipodoge')
     let inputCapipeyo = document.getElementById('capipeyo')
@@ -69,6 +82,8 @@ function ataqueTierra() {
 
 }
 
+
+
 function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(1,3)
 
@@ -82,10 +97,11 @@ function ataqueAleatorioEnemigo() {
     combate()
 }
 
+
 function combate() {
     let spanVidasJugador = document.getElementById('vidas_jugador')
     let spanVidasenemigo = document.getElementById('vidas_enemigo')
-
+    
     if (ataqueEnemigo === ataqueJugador) {
         crearMensaje("Empate")
     }   else if (ataqueJugador === 'FUEGO' && ataqueEnemigo === 'TIERRA' || ataqueJugador === 'AGUA' && ataqueEnemigo === 'FUEGO' || ataqueJugador === 'TIERRA' && ataqueEnemigo === 'AGUA') {
@@ -119,6 +135,9 @@ function crearMensaje(resultadoCombate) {
 }
 
 function crearMensajeFinal(resultadoCombateFinal) {
+    let sectionReiniciar = document.getElementById('reiniciar')
+    sectionReiniciar.style.display = 'block'
+
     let mensaje = document.getElementById('mensajes')
     
     let parrafo = document.createElement('p')
